@@ -354,7 +354,10 @@ angular.module('oi.select')
         restrict: 'AE',
         templateUrl: 'src/template.html',
         require: 'ngModel',
-        scope: {},
+        scope: {
+            oiOnAdded: '&?',
+            oiOnRemoved: '&?'
+        },
         compile: function (element, attrs) {
             var optionsExp = attrs.oiOptions,
                 match = optionsExp ? optionsExp.match(NG_OPTIONS_REGEXP) : ['', 'i', '', '', '', 'i', '', '', ''];
@@ -612,6 +615,8 @@ angular.module('oi.select')
                         resetMatches({query: true});
                     }
 
+                    scope.oiOnAdded({option: option});
+
                     valueChangedManually();
 
                     scope.oldQuery = scope.oldQuery || scope.query;
@@ -647,6 +652,8 @@ angular.module('oi.select')
                             if (multiple && options.closeList) {
                                 resetMatches({query: true});
                             }
+
+                            scope.oiOnRemoved({index: position, item: removedItem});
                         })
                 };
 

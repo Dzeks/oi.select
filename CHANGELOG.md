@@ -1,3 +1,13 @@
+## 0.2.21
+
+#### Features
+
+- **oi-on-added:**
+    - new callback after item was added to collection
+
+- **oi-on-removed:**
+    - new callback after item was removed from collection
+
 ## 0.2.20
 
 #### Features
