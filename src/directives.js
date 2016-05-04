@@ -269,7 +269,9 @@ angular.module('oi.select')
                         resetMatches({query: true});
                     }
 
-                    scope.oiOnAdded({option: option});
+                    if (scope.oiOnAdded) {
+                        scope.oiOnAdded({option: option});
+                    }
 
                     valueChangedManually();
 
@@ -307,7 +309,9 @@ angular.module('oi.select')
                                 resetMatches({query: true});
                             }
 
-                            scope.oiOnRemoved({index: position, item: removedItem});
+                            if (scope.oiOnRemoved) {
+                                scope.oiOnRemoved({index: position, item: removedItem});
+                            }
                         })
                 };
 
